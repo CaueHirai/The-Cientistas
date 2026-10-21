@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>The Cientistas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" th:href="@{/css/style.css(v=3)}">
+</head>
+<body class="jogar-body">
+    <iframe name="topo" src="topo.html" th:src="@{/topo.html}"></iframe>
+    <main class="pagina-centro">
+        <p class="descricao" th:text="${msg}">Mensagem</p>
+        <a href="/" th:href="@{/}" class="botao-contorno botao-link">VOLTAR AO INÍCIO</a>
+    </main>
+</body>
+</html>

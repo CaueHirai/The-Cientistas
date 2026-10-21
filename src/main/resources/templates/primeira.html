@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>The Cientistas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" th:href="@{/css/style.css(v=3)}">
+</head>
+<body class="primeira-body">
+
+    <iframe name="topo" src="topo.html" th:src="@{/topo.html}"></iframe>
+
+    <section class="hero-wrap">
+        <div class="conteudo-principal">
+            <p class="subtitulo">— SIMULADOR DE ***************</p>
+
+            <h1>VOCÊ É UMA<br><span class="coral">CIENTISTA?</span></h1>
+
+            <p class="descricao">
+                Descubra sua trajetória, faça escolhas e veja até onde sua ciência pode te levar.
+            </p>
+
+            <form action="start" method="post">
+                <input type="submit" name="b1" value="JOGAR">
+            </form>
+        </div>
+
+        <div class="cartas3">
+            <div class="cartaestilo cartafundo cartaesquerda">
+                <p class="cartasovr2fundo">OVR</p>
+                <p class="numerodoovr">74</p>
+                <p class="cartanome">NOVATA</p>
+                <p class="cartadescricao">Mourato67<br>onde a maioria termina</p>
+            </div>
+
+            <div class="cartaestilo cartafrente">
+                <div class="cartatopo">
+                    <div>
+                        <p class="cartasovr2fundo">OVR</p>
+                        <p class="cartafrenteovr">99</p>
+                    </div>
+                    <img src="static/images/perso.png" th:src="@{/images/perso.png}" alt="Cientista" class="cartafoto">
+                </div>
+                <span class="cartaposicaofrente">moraixq</span>
+                <h2 class="cartanomeprincipal">A CIENTISTA</h2>
+                <p class="carta-subtitulo">PRATICAMENTE IMPOSSÍVEL</p>
+                <p class="carta-sonho">o sonho</p>
+                <div class="cartaestatisticas">
+                    <div class="cartaestatisticasindi">
+                        <p class="cartaestatisticanum">312</p>
+                        <p class="cartaestatiticaspremio">ARTIGOS</p>
+                    </div>
+                    <div class="cartaestatisticasindi">
+                        <p class="cartaestatisticanum">18</p>
+                        <p class="cartaestatiticaspremio">PATENTES</p>
+                    </div>
+                    <div class="cartaestatisticasindi">
+                        <p class="cartaestatisticanum">3</p>
+                        <p class="cartaestatiticaspremio">NOBEL</p>
+                    </div>
+                </div>
+                <div class="cartalinhadaprinc">
+                    <p class="cartatextoprinc">THECIENTISTAS.COM</p>
+                    <p class="cartaestrelasdesgracadas">★★★★★</p>
+                </div>
+            </div>
+
+            <div class="cartaestilo cartafundo cartadireita">
+                <p class="cartaposicaopd">PD</p>
+                <p class="cartadescricao cartacordireita">ENTRE AS MAIORES<br>DE TODOS OS TEMPOS</p>
+            </div>
+        </div>
+    </section>
+
+        
+    <footer class="letreiro-rodape">
+        <p class="letreiro-texto">
+            VOCÊ É UMA CIENTISTA? <span class="vazado">VOCÊ É UMA CIENTISTA?</span> VOCÊ É UMA CIENTISTA? <span class="vazado">VOCÊ É UMA CIENTISTA?</span>
+        </p>
+    </footer>
+
+</body>
+</html>

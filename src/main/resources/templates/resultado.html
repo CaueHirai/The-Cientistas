@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>The Cientistas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" th:href="@{/css/style.css(v=3)}">
+</head>
+<body class="jogar-body">
+    <iframe name="topo" src="topo.html" th:src="@{/topo.html}"></iframe>
+    <main class="carreira-wrap">
+
+        <!-- COLUNA 1: desempenho em cada área -->
+        <aside class="painel painel-ranking">
+            <p class="painel-titulo">DESEMPENHO POR ÁREA</p>
+            <ol class="ranking-lista">
+                <li class="ranking-item" th:each="n, st : ${r.ranking()}"
+                    th:classappend="${n.nome() == r.area().nome} ? 'ranking-destaque'">
+                    <span class="rk-pos" th:text="${st.count}">1</span>
+                    <span class="rk-nome" th:text="${n.nome()}">Física</span>
+                    <span class="rk-pts" th:text="${n.ovr()}">93</span>
+                </li>
+            </ol>
+            <p class="ranking-legenda ranking-legenda-fraca">Área · OVR</p>
+        </aside>
+
+        <!-- COLUNA 2: card da cientista -->
+        <aside class="coluna-meio">
+            <div class="painel">
+                <div class="voce-topo">
+                    <img src="static/images/perso.png" th:src="@{/images/perso.png}" alt="Cientista" class="voce-foto">
+                    <div>
+                        <p class="voce-titulo" th:text="${r.nomeCarreira()}">VOCÊ</p>
+                        <p class="voce-sub" th:text="${r.area().nome}">Geologia</p>
+                    </div>
+                </div>
+                <div class="voce-geral">
+                    <div class="anel-geral">
+                        <span class="anel-numero" th:text="${r.ovr()}">60</span>
+                    </div>
+                    <span class="anel-rotulo">OVR</span>
+                </div>
+                <ul class="lista-dados">
+                    <li><span>Média geral</span><strong th:text="${r.media()}">70</strong></li>
+                    <li><span>Veredito</span><strong th:text="${r.titulo()}">NOVATA</strong></li>
+                    <li><span>Dificuldade</span><strong th:text="${dificuldade.rotulo}">Amador</strong></li>
+                </ul>
+            </div>
+            <div class="painel">
+                <p class="painel-titulo painel-titulo-coral">ATRIBUTOS ROUBADOS</p>
+                <ul class="lista-dados">
+                    <li th:each="l : ${r.linhas()}"><span th:text="${l.atributo()}">Memória</span><strong th:text="${l.valor()}">92</strong></li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- COLUNA 3: resumo final -->
+        <section class="coluna-direita">
+            <div class="cabecalho-carreira">
+                <p th:text="${#strings.toUpperCase(r.area().nome)}">GEOLOGIA</p>
+                <p>OVR <strong class="coral" th:text="${r.ovr()}">60</strong></p>
+                <p>MÉDIA <strong th:text="${r.media()}">70</strong></p>
+            </div>
+
+            <div class="card-temporada">
+                <div class="card-temporada-topo">
+                    <div>
+                        <h2 class="inst-nome" th:text="${r.nomeCarreira()}">MINHA CARREIRA</h2>
+                        <p class="inst-sub" th:text="${r.area().nome} + ' · carreira montada'">Geologia · carreira montada</p>
+                    </div>
+                    <div class="inst-ranking">
+                        <p>VEREDITO</p>
+                        <strong th:text="${r.titulo()}">NOVATA</strong>
+                    </div>
+                </div>
+
+                <div class="quadros-estat">
+                    <div class="quadro-estat" th:each="l : ${r.linhas()}">
+                        <p th:text="${#strings.toUpperCase(l.atributo())}">MEMÓRIA</p>
+                        <strong th:text="${l.valor()}">92</strong>
+                        <small th:text="${l.cientista()}">Marie Curie</small>
+                    </div>
+                </div>
+
+                <p class="aviso-evento" th:if="${r.melhorArea() != r.area().nome}"
+                   th:text="'Seu perfil combina mais com ' + ${r.melhorArea()}">Seu perfil combina mais com Física</p>
+                <p class="aviso-evento" th:unless="${r.melhorArea() != r.area().nome}">Você escolheu a área perfeita para o seu perfil!</p>
+            </div>
+
+            <div class="acoes-carreira">
+                <form action="start" th:action="@{/start}" method="post">
+                    <input type="submit" name="b4" value="JOGAR DE NOVO" class="botao-grande botao-avancar">
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

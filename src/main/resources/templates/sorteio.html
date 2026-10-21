@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>The Cientistas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" th:href="@{/css/style.css(v=3)}">
+</head>
+<body class="jogar-body">
+    <iframe name="topo" src="topo.html" th:src="@{/topo.html}"></iframe>
+    <main class="pagina-centro pagina-draft">
+        <div class="draft-cabecalho">
+            <p class="draft-slots">SLOTS PREENCHIDOS <strong th:text="${feitos} + '/' + ${total}">0/6</strong></p>
+            <p class="draft-info"><span th:text="${#strings.toUpperCase(nomeCarreira)}">MINHA CARREIRA</span> · <span class="modo-selo" th:text="${#strings.toUpperCase(dificuldade.rotulo)}">AMADOR</span></p>
+        </div>
+
+        <div class="barra-slots">
+            <span class="slot" th:each="i : ${#numbers.sequence(1, total)}"
+                  th:classappend="${i &lt;= feitos} ? 'slot-cheio'"></span>
+        </div>
+
+        <section class="lenda-atual">
+            <p class="lenda-rotulo">CIENTISTA SORTEADA</p>
+            <h2 class="lenda-nome">
+                <span th:if="${#strings.isEmpty(mulher.informacoes)}" th:text="${#strings.toUpperCase(mulher.nome)}">MARIE CURIE</span>
+                <span th:unless="${#strings.isEmpty(mulher.informacoes)}" class="lenda-com-info" tabindex="0" th:attr="data-info=${mulher.informacoes}">
+                    <span th:text="${#strings.toUpperCase(mulher.nome)}">MARIE CURIE</span>
+                    <span class="lenda-dica" aria-hidden="true">?</span>
+                </span>
+            </h2>
+        </section>
+
+        <form action="jogo/roubar" th:action="@{/jogo/roubar}" method="post">
+            <div class="atributos-topo">
+                <p class="eyebrow-pequeno">ESCOLHA 1 ATRIBUTO PRA ROUBAR</p>
+                <p class="atributos-falta">Falta <strong th:text="${total - feitos}">6</strong></p>
+            </div>
+            <div class="grade-atributos">
+                <button type="submit" name="atributo" class="atributo"
+                        th:each="a : ${atributos}"
+                        th:value="${a.name()}"
+                        th:disabled="${escolhas.containsKey(a)}"
+                        th:classappend="${escolhas.containsKey(a)} ? 'atributo-usado atributo-roubado'">
+                    <span class="atributo-sigla" th:text="${#strings.toUpperCase(#strings.substring(a.name(), 0, 3))}">MEM</span>
+                    <span class="atributo-nome" th:text="${a.rotulo}">Memória</span>
+                    <!-- Já roubado: mostra o valor que foi roubado (nos dois modos) -->
+                    <span class="atributo-valor" th:if="${escolhas.containsKey(a)}"
+                          th:text="${escolhas.get(a).valor()}">92</span>
+                    <!-- Ainda livre: amador vê o valor da cientista atual; profissional vê ? -->
+                    <span class="atributo-valor" th:if="${!escolhas.containsKey(a) and dificuldade.mostraValores}"
+                          th:text="${a.valorDe(mulher)}">92</span>
+                    <span class="atributo-valor atributo-oculto" th:if="${!escolhas.containsKey(a) and !dificuldade.mostraValores}">?</span>
+                </button>
+            </div>
+        </form>
+
+        <!-- Amador: reroll limitado -->
+        <form th:if="${dificuldade.mostraValores}" class="acoes-reroll"
+              action="jogo/reroll" th:action="@{/jogo/reroll}" method="post">
+            <button type="submit" class="botao-contorno" th:disabled="${rerolls == 0}">
+                ↻ REROLL <span th:text="'(' + ${rerolls} + ')'">(2)</span>
+            </button>
+        </form>
+
+    </main>
+    <footer class="rodape-simples">
+        <p>thecientistas.com — Sem afiliação com qualquer instituição, universidade ou cientista.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>The Cientistas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css" th:href="@{/css/style.css(v=3)}">
+</head>
+<body class="jogar-body">
+    <iframe name="topo" src="topo.html" th:src="@{/topo.html}"></iframe>
+    <main class="pagina-centro">
+        <p class="eyebrow"><span class="eyebrow-linha"></span>COMO FUNCIONA</p>
+        <h2 class="titulo-pagina">Roube atributos de lendas. Monte sua carreira. Descubra se você é <span class="coral">A CIENTISTA.</span></h2>
+
+        <p class="descricao coral" th:if="${erro}" th:text="${erro}">Erro</p>
+
+        <form action="jogo/definir" th:action="@{/jogo/definir}" method="post">
+            <h3 class="secao-titulo">NOME DA SUA CARREIRA</h3>
+            <input type="text" name="nomeCarreira" class="campo-texto" placeholder="Como o mundo vai te chamar" maxlength="40" required>
+
+            <h3 class="secao-titulo">DIFICULDADE</h3>
+            <div class="grade grade2">
+                <label class="opcao" th:each="d, st : ${dificuldades}">
+                    <input type="radio" name="dificuldade" th:value="${d.name()}" th:checked="${st.first}" value="AMADOR" required>
+                    <span class="opcao-caixa opcao-larga">
+                        <span class="opcao-titulo" th:text="${d.rotulo}">Amador</span>
+                        <span class="opcao-texto" th:text="${d.descricao}">Você vê o valor de cada atributo.</span>
+                    </span>
+                </label>
+            </div>
+
+            <h3 class="secao-titulo">ESCOLHA SUA ÁREA</h3>
+            <div class="grade grade3">
+                <label class="opcao" th:each="a, st : ${areas}">
+                    <input type="radio" name="area" th:value="${a.codigo}" th:checked="${st.first}" value="1" required>
+                    <span class="opcao-caixa">
+                        <span class="opcao-sigla" th:text="${#strings.length(a.nome) >= 3} ? ${#strings.toUpperCase(#strings.substring(a.nome, 0, 3))} : ${#strings.toUpperCase(a.nome)}">GEO</span>
+                        <span class="opcao-nome" th:text="${a.nome}">Geologia</span>
+                    </span>
+                </label>
+            </div>
+
+            <input type="submit" name="b2" value="COMEÇAR DRAFT" class="botao-grande">
+        </form>
+    </main>
+</body>
+</html>

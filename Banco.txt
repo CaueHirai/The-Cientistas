@@ -1,0 +1,77 @@
+INSERT INTO area
+    (nome, peso_memoria, peso_analise, peso_criatividade, peso_rigor, peso_raciocinio, peso_calculo)
+VALUES
+    ('Matemática',             5, 20, 10, 22, 25, 18),
+    ('Física',                 8, 20, 12, 18, 22, 20),
+    ('Biologia',              28, 20, 10, 17, 15, 10),
+    ('Química',               18, 20, 10, 18, 17, 17),
+    ('Ciência da Computação',  8, 20, 17, 17, 23, 15),
+    ('Ciências Humanas',      25, 20, 22, 10, 20,  3);
+
+INSERT INTO mulher
+    (nome, memoria, analise, criatividade, rigor, raciocinio, calculo)
+VALUES
+    ('Marie Curie', 92, 95, 88, 98, 93, 96),
+    ('Rosalind Franklin', 90, 96, 85, 97, 90, 92),
+    ('Ada Lovelace', 92, 94, 98, 85, 97, 96),
+    ('Katherine Johnson', 85, 93, 80, 97, 95, 99),
+    ('Jane Goodall', 98, 90, 85, 82, 80, 67),
+    ('Barbara McClintock', 95, 97, 96, 93, 94, 80),
+    ('Jocelyn Bell Burnell', 90, 94, 80, 92, 90, 88),
+    ('Bertha Lutz', 85, 84, 80, 82, 82, 70),
+    ('Sonia Guimarães', 90, 93, 80, 95, 98, 98),
+    ('Vivian Miranda', 88, 90, 83, 94, 96, 98),
+    ('Rita Lobato', 95, 93, 90, 95, 88, 88),
+    ('Tu Youyou', 96, 90, 85, 93, 87, 67),
+    ('Mae Jemison', 88, 97, 83, 97, 98, 98),
+    ('Djamila Ribeiro', 94, 87, 95, 88, 94, 80),
+    ('Nettie Stevens', 88, 70, 68, 93, 94, 72),
+    ('Inge Lehmann', 80, 96, 80, 92, 88, 86),
+    ('Mary Anning', 94, 82, 85, 87, 76, 58),
+    ('Alice Ball', 85, 94, 68, 88, 90, 83),
+    ('Dian Fossey', 94, 83, 86, 85, 72, 42),
+    ('Tebello Nyokong', 86, 94, 82, 96, 91, 87),
+    ('Grace Hopper', 93, 98, 90, 82, 88, 73),
+    ('May-Britt Moser', 80, 90, 76, 85, 88, 64),
+    ('Eunice Newton', 84, 90, 95, 86, 90, 83),
+    ('Mileva Maric', 66, 89, 84, 84, 90, 90);
+
+INSERT INTO universidade
+    (codigo, nome, ranking)
+VALUES
+    (1, 'Universidade de São Paulo', 1),
+    (2, 'Universidade Estadual de Campinas', 2),
+    (3, 'Universidade Federal do Rio de Janeiro', 3),
+    (4, 'Universidade de Brasília', 4),
+    (5, 'Universidade Federal de Rondônia', 5),
+    (6, 'Universidade Iguaçu', 6);
+
+UPDATE mulher m
+SET informacoes = v.info
+FROM (VALUES
+    ('Marie Curie', 'Física e química polonesa naturalizada francesa. Pioneira nos estudos da radioatividade, descobriu o polônio e o rádio. Foi a primeira mulher a ganhar um Nobel e a única pessoa premiada em duas ciências diferentes (Física em 1903 e Química em 1911).'),
+    ('Rosalind Franklin', 'Química britânica especialista em difração de raios X. Sua Fotografia 51 revelou a estrutura helicoidal do DNA e foi peça-chave para a descoberta da dupla hélice. Também estudou vírus e a estrutura do carvão.'),
+    ('Ada Lovelace', 'Matemática inglesa do século XIX. Em 1843 escreveu, para a Máquina Analítica de Charles Babbage, o que é considerado o primeiro algoritmo feito para ser executado por uma máquina. Já imaginava que computadores poderiam ir além de cálculos numéricos.'),
+    ('Katherine Johnson', 'Matemática americana da NASA. Calculou à mão trajetórias de missões como o voo de Alan Shepard e a órbita de John Glenn, que pediu que ela conferisse os números do computador antes de decolar. Também trabalhou na missão Apollo 11.'),
+    ('Jane Goodall', 'Primatóloga britânica. Desde 1960 estuda chimpanzés selvagens na Tanzânia e descobriu que eles fabricam e usam ferramentas, o que mudou a visão científica sobre os animais. Hoje é uma das maiores vozes da conservação ambiental.'),
+    ('Barbara McClintock', 'Geneticista americana. Estudando o milho, descobriu os transposons, os chamados genes saltadores, que mudam de posição no genoma. Sua ideia demorou décadas para ser aceita e lhe rendeu o Nobel de Medicina em 1983.'),
+    ('Jocelyn Bell Burnell', 'Astrofísica norte-irlandesa. Ainda estudante de doutorado, em 1967 identificou o primeiro pulsar, um tipo de estrela de nêutrons. O Nobel pela descoberta foi dado ao seu orientador, e não a ela.'),
+    ('Bertha Lutz', 'Zoóloga brasileira, pesquisadora do Museu Nacional e especialista em anfíbios. Liderou a luta pelo voto feminino no Brasil e participou da criação da Carta da ONU defendendo a igualdade entre homens e mulheres.'),
+    ('Sonia Guimarães', 'Física brasileira, professora do ITA e a primeira mulher negra doutora em Física do país. Pesquisa sensores de radiação infravermelha e incentiva meninas e jovens negros a seguirem carreira científica.'),
+    ('Vivian Miranda', 'Cosmóloga brasileira. Estuda a energia escura e a evolução do Universo usando dados de grandes levantamentos astronômicos e simulações computacionais.'),
+    ('Rita Lobato', 'Rita Lobato Velho Lopes foi a primeira mulher a se formar em Medicina no Brasil, em 1887, na Bahia. Atuou como médica e obstetra numa época em que mulheres eram barradas das faculdades.'),
+    ('Tu Youyou', 'Farmacêutica chinesa. Estudou textos de medicina tradicional chinesa e, a partir da planta artemísia, isolou a artemisinina, base do tratamento da malária que salvou milhões de vidas. Ganhou o Nobel de Medicina em 2015.'),
+    ('Mae Jemison', 'Médica, engenheira e astronauta americana. Em 1992 se tornou a primeira mulher negra a viajar ao espaço, a bordo do ônibus espacial Endeavour.'),
+    ('Djamila Ribeiro', 'Filósofa, escritora e feminista negra brasileira. Autora de O que é lugar de fala?, discute racismo, gênero e desigualdade e coordena a coleção Feminismos Plurais.'),
+    ('Nettie Stevens', 'Geneticista americana. Em 1905, estudando besouros, mostrou que o sexo é determinado pelos cromossomos X e Y, uma descoberta fundamental da genética.'),
+    ('Inge Lehmann', 'Sismóloga dinamarquesa. Analisando ondas de terremotos, concluiu em 1936 que a Terra possui um núcleo interno sólido dentro do núcleo externo líquido.'),
+    ('Mary Anning', 'Coletora de fósseis inglesa, nascida numa família pobre. Encontrou na costa de Lyme Regis esqueletos de ictiossauros e plesiossauros que mudaram a paleontologia, mas foi excluída das sociedades científicas por ser mulher.'),
+    ('Alice Ball', 'Química americana. Aos 23 anos desenvolveu um método injetável com óleo de chaulmugra que tratou a hanseníase por décadas. Morreu muito jovem, e o crédito pelo trabalho foi tomado por outro pesquisador durante anos.'),
+    ('Dian Fossey', 'Primatóloga americana. Dedicou quase 20 anos ao estudo e à proteção dos gorilas-da-montanha em Ruanda, onde fundou o centro de pesquisa Karisoke. Contou sua história no livro Gorilas na Névoa.'),
+    ('Tebello Nyokong', 'Química sul-africana da Universidade Rhodes. Desenvolve moléculas e nanomateriais para terapia fotodinâmica, um tratamento contra o câncer ativado por luz, e para sensores.'),
+    ('Grace Hopper', 'Cientista da computação e contra-almirante da Marinha americana. Criou um dos primeiros compiladores e defendeu linguagens de programação próximas do inglês, o que inspirou o COBOL.'),
+    ('May-Britt Moser', 'Neurocientista norueguesa. Com Edvard Moser, descobriu as células de grade do cérebro, que funcionam como um sistema de coordenadas para localização no espaço. Dividiu o Nobel de Medicina em 2014.'),
+    ('Eunice Newton', 'Cientista americana (Eunice Newton Foote). Em 1856 mostrou em experimentos que o gás carbônico e o vapor de água retêm calor, um passo inicial para entender o efeito estufa. Seu trabalho ficou esquecido por mais de um século.'),
+    ('Mileva Maric', 'Física e matemática sérvia, uma das poucas mulheres a estudar Física no Politécnico de Zurique. Foi colega e primeira esposa de Albert Einstein, e historiadores debatem até hoje o tamanho da sua contribuição ao trabalho dele.')
+) AS v(nome, info)
+WHERE m.nome = v.nome;
