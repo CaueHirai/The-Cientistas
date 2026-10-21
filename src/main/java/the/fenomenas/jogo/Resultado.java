@@ -60,9 +60,9 @@ public record Resultado(String nomeCarreira, AreaConhecimento area, int ovr, int
     }
 
     private static String titulo(int ovr) {
-        if (ovr >= 90) return "A CIENTISTA";
-        if (ovr >= 80) return "CIENTISTA DE DESTAQUE";
-        if (ovr >= 65) return "PESQUISADORA";
+        if (ovr >= 88) return "A CIENTISTA";
+        if (ovr >= 84) return "CIENTISTA DE DESTAQUE";
+        if (ovr >= 80) return "PESQUISADORA";
         return "NOVATA";
     }
 }
